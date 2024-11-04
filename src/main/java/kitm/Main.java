@@ -7,21 +7,61 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int[] numbers = new int[11];
 
-        String[] studentas = {"Jonas", "tadas", "Ieva", "Toma"};
+        Scanner input = new Scanner(System.in);
 
-        for(String student : studentas)
+        System.out.println("Iveskite kiek sveciu: ");
+
+        int sveciuNr = input.nextInt();
+
+        System.out.println("Iveskite kiek sveciu yra Blackliste: ");
+
+        int BlackNr = input.nextInt();
+
+        String[] sveciuVardai = new String[sveciuNr];
+        String[] blackList = new String[BlackNr];
+        input.nextLine();
+
+        System.out.println("Iveskite Blackliste narius: ");
+
+        for (int i = 0; i < BlackNr; i++)
         {
-            System.out.println(student);
+            blackList[i] = input.nextLine();
         }
 
-        for(int i = 0; i < numbers.length; i++)
+        System.out.println("Iveskite narius: ");
+
+        for (int i = 0; i < sveciuNr; i++)
         {
-            numbers[i] = new Random().nextInt(100);
+            sveciuVardai[i] = input.nextLine();
+
+            for(String vard : blackList)
+            {
+                if (vard.equals(sveciuVardai[i]))
+                {
+                    sveciuVardai[i] += " BlackListed";
+                }
+            }
         }
 
-        System.out.println(Arrays.toString(numbers));
+        for (int i = 0; i < sveciuNr; i++)
+        {
+            System.out.println(i+1 + ". " + sveciuVardai[i]);
+
+        }
+
+        input.close();
+//        for(String student : studentas)
+//        {
+//            System.out.println(student);
+//        }
+//
+//        for(int i = 0; i < numbers.length; i++)
+//        {
+//            numbers[i] = new Random().nextInt(100);
+//        }
+//
+//        System.out.println(Arrays.toString(numbers));
 
 
 //        for(int i = 0; i < studentas.length; i++)
